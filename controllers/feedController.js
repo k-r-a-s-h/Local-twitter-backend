@@ -14,7 +14,7 @@ const getFeed = async (req,res,next)=>{
             "postedBy":{
                "$in" : followersId
             }
-        }).populate('postedBy','_id firstName lastName email')
+        }).sort({'createdAt':-1}).populate('postedBy','_id firstName lastName email')
         console.log(posts)
         res.status(200).json({posts:posts})
     }
